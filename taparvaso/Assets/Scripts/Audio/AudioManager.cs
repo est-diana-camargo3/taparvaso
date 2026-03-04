@@ -27,8 +27,15 @@ public class AudioManager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
     }
+    
+private void Start(){
+    PlayMusic(MusicaEjemplo);
+    PlayAmbience(AmbienteEjemplo);
+    }
 
-    // Reproduce un SFX en un punto del mundo con variación de pitch y volumen
+
+
+    // Reproduce un SFX en un punto del mundo con variaciï¿½n de pitch y volumen
     public void PlaySFX(SoundData data, Vector3 position)
     {
         GameObject tempGO = new GameObject("TempAudio_" + data.name);
@@ -73,7 +80,7 @@ public class AudioManager : MonoBehaviour
         Destroy(tempGO, data.clip.length / audioSource.pitch + 0.1f);
     }
 
-    // Reproduce música de fondo
+    // Reproduce musica de fondo
     public void PlayMusic(SoundData data)
     {
         if (musicSource == null) return;
